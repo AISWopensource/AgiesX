@@ -23,12 +23,12 @@
 | 브랜치 | 역할 | 보호 수준 |
 |--------|------|-----------|
 | `main` | 최종 배포/안정 버전 | 🔒 보호됨 |
-| `develop` | 개발 통합 브랜치 | 🔒 보호됨 |
-| `feature/*` | 새 기능 개발 | 자유 |
-| `fix/*` | 버그 수정 | 자유 |
-| `docs/*` | 문서 작업 | 자유 |
-| `refactor/*` | 코드 리팩토링 | 자유 |
-| `chore/*` | 기타 작업 (빌드, 설정 등) | 자유 |
+| `develop` | 개발 통합 브랜치 |  -  |
+| `feature/*` | 새 기능 개발 |  -  |
+| `fix/*` | 버그 수정 |  -  |
+| `docs/*` | 문서 작업 |  -  |
+| `refactor/*` | 코드 리팩토링 |  -  |
+| `chore/*` | 기타 작업 (빌드, 설정 등) |  -  |
 
 ### 네이밍 규칙
 
@@ -70,12 +70,26 @@ cd AgiesX
 
 #### Step 2: develop 브랜치에서 작업 브랜치 생성
 
+작업 시작 전에는 반드시 `develop` 브랜치의 최신 변경사항을 반영한 뒤,
+새 작업 브랜치를 생성합니다.
+
 ```bash
 git checkout develop
 git pull origin develop
 git checkout -b feature/ui-guide
 ```
 
+#### Step 2-1: 작업 중 최신 develop 반영
+
+작업 중 다른 팀원의 변경사항이 `develop`에 머지되었다면,
+아래 명령으로 현재 작업 브랜치에 최신 develop을 반영합니다.
+
+```bash
+git checkout develop
+git pull origin develop
+git checkout feature/ui-guide
+git merge develop
+```
 #### Step 3: 작업 및 커밋
 
 ```bash
@@ -283,5 +297,4 @@ Docker 빌드 시 라이선스 리포트가 자동 생성됩니다:
 
 질문이 있으시면 아래로 연락해주세요:
 
-- **Email:** info@pentagi.com 또는 info@vxcontrol.com
 - **GitHub Issues:** [Issues 페이지](https://github.com/AISWopensource/AgiesX/issues)
